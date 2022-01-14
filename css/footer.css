@@ -1,0 +1,73 @@
+.footer {
+    display: flex;
+    padding: 50px 8%;
+    justify-content: space-between;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    font-family: 'Montserrat', serif;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__site-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__site-title {
+    margin: 0;
+    font: normal 36px 'Monstserrat';
+}
+
+.footer__site-title span {
+    color: rgb(52, 165, 108);
+}
+
+.footer__copyright {
+    margin: 0;
+    color: #8f9296;
+}
+
+.footer__contact-info {
+    display: flex;
+    gap: 16px;
+    flex-flow: row wrap;
+}
+
+.footer__contact-item {
+    display: flex;
+    align-items: center;
+}
+
+.footer__contact-item:not(:last-child) {
+    margin: 0 16px 0 0;
+}
+
+.footer__contact-icon {
+    background-color: rgb(137, 189, 137);
+    color: white;
+    font-size: 20px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8px 0 0;
+}
+
+.footer__contact-item p {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__contact-item p span:first-child {
+    font-size: 14px;
+    margin: 0 0 4px 0;
+}
+
+@media all and (min-width: 768px) {
+    .footer {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}

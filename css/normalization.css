@@ -1,15 +1,27 @@
-body, html {
-    padding: 0px;
-    margin: 0px;
+html {
+    margin: 0;
+}
+
+body,
+html {
+    padding: 0;
     width: 100vw;
     min-height: 100vh;
 }
 
 * {
     box-sizing: border-box;
+    font-family: 'Montserrat', serif;
 }
 
-button, input {
+button,
+input {
     outline: 0px;
     border: 0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

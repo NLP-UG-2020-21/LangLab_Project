@@ -1,0 +1,43 @@
+header {
+    min-height: 100px;
+    font-family: 'Montserrat', serif;
+    font-size: 22px;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+#logo {
+    flex-shrink: 0;
+}
+
+#header-nav__list {
+    display: flex;
+}
+
+.header-nav__list-item {
+    float: left;
+}
+
+.header-nav__link {
+    display: block;
+    color: rgb(52, 165, 108);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.header-nav__link:hover,
+.header-nav__link--active {
+    background-color: rgb(209, 202, 202);
+    color: rgb(52, 165, 108);
+}
+
+@media all and (min-width: 768px) {
+    header {
+        padding: 0 8%;
+    }
+}
