@@ -1,0 +1,9 @@
+.basic-link {
+    color: black;
+    text-decoration: none;
+    transition: all 0.1s ease;
+}
+
+.basic-link:hover {
+    color: rgb(73, 73, 73);
+}

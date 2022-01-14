@@ -1,0 +1,25 @@
+.about-header {
+    text-align: left;
+    color: rgb(52, 165, 108);
+    font-size: xx-large;
+}
+
+.about-name-surname {
+    color: rgb(52, 165, 108);
+    margin-top: 50px;
+    text-align: center;
+}
+
+.about-icons-container {
+    text-align: center;
+}
+
+.about-icons {
+    margin: 20px;
+    color: rgb(23, 23, 23);
+    font-size: 35px;
+}
+
+.about-icons:hover {
+    color: rgb(52, 165, 108);
+}
