@@ -1,7 +1,7 @@
 header {
     min-height: 100px;
     font-family: 'Montserrat', serif;
-    font-size: 22px;
+    font-size: 18px;
     background-color: white;
     display: flex;
     flex-wrap: wrap;
@@ -12,10 +12,39 @@ header {
 
 #logo {
     flex-shrink: 0;
+    width: 250px;
+}
+
+#header-nav__hamburger-toggle,
+#header-nav__hamburger-close a {
+    margin-right: 20px;
+    font-size: 30px;
+    color: #747575;
+    cursor: pointer;
+}
+
+#header-nav__hamburger-close {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+}
+
+#header-nav__hamburger-toggle:target + #header-nav__list {
+    display: flex;
 }
 
 #header-nav__list {
-    display: flex;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 80px 50px;
 }
 
 .header-nav__list-item {
@@ -26,7 +55,7 @@ header {
     display: block;
     color: rgb(52, 165, 108);
     text-align: center;
-    padding: 14px 16px;
+    padding: 7px 8px;
     text-decoration: none;
 }
 
@@ -38,6 +67,35 @@ header {
 
 @media all and (min-width: 768px) {
     header {
+        padding: 0 6%;
+    }
+
+    #header-nav__hamburger-toggle {
+        display: none;
+    }
+
+    #header-nav__hamburger-close {
+        display: none;
+    }
+
+    #header-nav__list {
+        display: flex;
+        position: static;
+        padding: 0;
+        flex-direction: row;
+    }
+}
+
+@media all and (min-width: 1200px) {
+    header {
+        font-size: 22px;
         padding: 0 8%;
+    }
+    #logo {
+        width: 350px;
+    }
+
+    .header-nav__link {
+        padding: 14px 16px;
     }
 }
