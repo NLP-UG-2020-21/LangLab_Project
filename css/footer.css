@@ -8,7 +8,6 @@
     flex-direction: column;
     align-items: center;
 }
-
 .animate__animated.animate__fadeInUp {
     animation-duration: 1.5s;
     animation-timing-function: linear;
