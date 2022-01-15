@@ -15,6 +15,11 @@ header {
     width: 250px;
 }
 
+.animate__animated.animate__fadeInDown {
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+}
+
 #header-nav__hamburger-toggle,
 #header-nav__hamburger-close a {
     margin-right: 20px;
