@@ -9,6 +9,10 @@
     align-items: center;
 }
 
+.animate__animated.animate__fadeInUp {
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+}
 .footer__site-info {
     display: flex;
     flex-direction: column;
