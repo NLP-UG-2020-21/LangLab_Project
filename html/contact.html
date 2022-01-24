@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="../css/nav.css" />
         <link rel="stylesheet" href="../css/footer.css" />
         <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/contact.css" />
 
         <script src="../js/index.js" async defer></script>
         <title>Chatbot</title>
@@ -30,17 +31,17 @@
             <img id="logo" src="../images/logo.png" alt="logo" />
             <nav id="header-nav">
                 <a
-                  href="#header-nav__hamburger-toggle"
-                  id="header-nav__hamburger-toggle"
+                    href="#header-nav__hamburger-toggle"
+                    id="header-nav__hamburger-toggle"
                 >
                     <i class="fa fa-bars header-nav__hamburger"></i>
                 </a>
 
                 <ul id="header-nav__list">
                     <li id="header-nav__hamburger-close">
-                      <a href="#header-nav__hamburger-close">
-                        <i class="fa fa-close"></i>
-                      </a>
+                        <a href="#header-nav__hamburger-close">
+                            <i class="fa fa-close"></i>
+                        </a>
                     </li>
                     <li class="header-nav__list-item">
                         <a class="header-nav__link" href="index.html">Home</a>
@@ -64,7 +65,54 @@
             </nav>
         </header>
         <section>
-            <div class="contact-box"></div>
+            <h2 class="contact__section-title">Contact Us</h2>
+            <div class="contact-box">
+                <form action="" class="contact__form">
+                    <label class="contact__label">
+                        <span>Name:</span>
+                        <input
+                            placeholder="Your Name"
+                            type="text"
+                            class="contact__input"
+                            required
+                        />
+                    </label>
+                    <label class="contact__label">
+                        <span>E-mail:</span>
+                        <input
+                            placeholder="Your E-mail"
+                            type="email"
+                            required
+                            class="contact__input"
+                        />
+                    </label>
+                    <label class="contact__label">
+                        <span>Message:</span>
+                        <textarea
+                            placeholder="Your Message"
+                            class="contact__textarea"
+                            required
+                        ></textarea>
+                    </label>
+                    <button class="contact__btn">Send</button>
+                </form>
+                <ul class="contact__info">
+                    <li class="contact__info-item">
+                        <i class="fa fa-envelope footer__contact-icon"></i>
+                        <p>
+                            <a
+                                class="basic-link"
+                                href="mailto:calmebot.langlab@gmail.com"
+                                >calmebot.langlab@gmail.com</a
+                            >
+                        </p>
+                    </li>
+                    <li class="contact__info-item">
+                        <i class="fa fa-map-marker footer__contact-icon"></i>
+                        <p>Wita Stwosza 51, 80-312 Gdańsk</p>
+                    </li>
+                </ul>
+            </div>
         </section>
         <footer class="footer">
             <div class="footer__site-info">
