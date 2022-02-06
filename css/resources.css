@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+ }
+ .card {
+    color: white;
+    float: left;
+    width: calc(25% - 20px);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    height: 250px;
+
+ }
+
+ .card p {
+    font-size: 18px;
+ }
+ .cardContainer:after {
+    content: "";
+    display: table;
+    clear: both;
+ }
+ @media screen and (max-width: 600px) {
+    .card {
+       width: 100%;
+    }
+ }
+
+ .card a {
+    color: white;
+    text-decoration: none;
+    }
+ 
+ .card a:hover {
+     color:rgb(115, 117, 116)
+ }
+
+ h1 {
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    color: rgb(115, 117, 116);
+    font-size: 24px; 
+    font-weight: 500; 
+    line-height: 48px; 
+  }
+  h1:hover {
+      color: rgb(52, 165, 108);
+  }
+  h1:before,
+  h1:after {
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    content: '';
+  }
+  
+  h1:before {
+    right: 0;
+    top: 0;
+    border-right: 3px solid rgb(137, 189, 137);
+    border-top: 3px solid rgb(137, 189, 137);
+  }
+  
+  h1:after {
+    left: 0;
+    bottom: 0;
+    border-left: 3px solid rgb(137, 189, 137);
+    border-bottom: 3px solid rgb(137, 189, 137);
+  }
+
