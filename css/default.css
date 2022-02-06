@@ -30,9 +30,6 @@ section {
     color:rgb(52, 165, 108);
     opacity: 1;
 }
-.chatlog {
-    /* font-family: 'Montserrat', serif; */
-}
 
 #chatbox {
     font-size: large;
