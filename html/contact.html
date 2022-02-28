@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="../css/contact.css" />
         <script src="../js/nav.js" async defer></script>
         <script src="../js/index.js" async defer></script>
+        <script src="../js/contact.js" async defer></script>
+
         <title>Chatbot</title>
         <meta
             name="author"
@@ -68,7 +70,7 @@
                         <input
                             placeholder="Your Name"
                             type="text"
-                            class="contact__input"
+                            class="contact__input--name contact__input"
                             required
                         />
                     </label>
@@ -78,14 +80,14 @@
                             placeholder="Your E-mail"
                             type="email"
                             required
-                            class="contact__input"
+                            class="contact__input--email contact__input"
                         />
                     </label>
                     <label class="contact__label">
                         <span>Message:</span>
                         <textarea
                             placeholder="Your Message"
-                            class="contact__textarea"
+                            class="contact__input--message contact__textarea"
                             required
                         ></textarea>
                     </label>
