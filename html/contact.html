@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+        />
         <link rel="stylesheet" href="../css/default.css" />
         <link rel="stylesheet" href="../css/normalization.css" />
         <link rel="stylesheet" href="../css/nav.css" />
         <link rel="stylesheet" href="../css/footer.css" />
         <link rel="stylesheet" href="../css/common.css" />
         <link rel="stylesheet" href="../css/contact.css" />
+        <script src="../js/nav.js" async defer></script>
         <script src="../js/index.js" async defer></script>
+        <script src="../js/contact.js" async defer></script>
+
         <title>Chatbot</title>
-        <meta name="author" content="Krystian Borkowski, Klaudia Ceglarz, Dagmara Solska"/>
+        <meta
+            name="author"
+            content="Krystian Borkowski, Klaudia Ceglarz, Dagmara Solska"
+        />
         <meta name="description" content="Our first chatbot" />
         <meta name="keywords" content="chatbot" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body>
-        <header>
+        <header class="header">
             <img id="logo" src="../images/logo.png" alt="logo" />
-            <nav id="header-nav">
-                <a
-                    href="#header-nav__hamburger-toggle"
-                    id="header-nav__hamburger-toggle"
-                >
-                    <i class="fa fa-bars header-nav__hamburger"></i>
-                </a>
 
-                <ul id="header-nav__list">
-                    <li id="header-nav__hamburger-close">
-                        <a href="#header-nav__hamburger-close">
-                            <i class="fa fa-close"></i>
-                        </a>
-                    </li>
+            <nav id="header-nav">
+                <button class="header-nav__hamburger-toggle">
+                    <i class="fa fa-bars header-nav__hamburger"></i>
+                    <i class="fa fa-close"></i>
+                </button>
+                <ul class="header-nav__list">
                     <li class="header-nav__list-item">
-                        <a class="header-nav__link" href="../index.html">Home</a>
+                        <a class="header-nav__link" href="../index.html"
+                            >Home</a
+                        >
                     </li>
                     <li class="header-nav__list-item">
                         <a class="header-nav__link" href="about.html"
@@ -63,7 +70,7 @@
                         <input
                             placeholder="Your Name"
                             type="text"
-                            class="contact__input"
+                            class="contact__input--name contact__input"
                             required
                         />
                     </label>
@@ -73,14 +80,14 @@
                             placeholder="Your E-mail"
                             type="email"
                             required
-                            class="contact__input"
+                            class="contact__input--email contact__input"
                         />
                     </label>
                     <label class="contact__label">
                         <span>Message:</span>
                         <textarea
                             placeholder="Your Message"
-                            class="contact__textarea"
+                            class="contact__input--message contact__textarea"
                             required
                         ></textarea>
                     </label>
