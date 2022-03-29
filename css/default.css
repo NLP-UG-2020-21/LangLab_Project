@@ -31,6 +31,15 @@ section {
     opacity: 1;
 }
 
+#name-box {
+    font-size: large;
+    box-shadow: 2px 2px rgb(142, 180, 157);
+    height: 30px;
+    margin-top: 75px;
+    top: 60px;
+    border-radius: 5px;
+}
+
 #chatbox {
     font-size: large;
     box-shadow: 2px 2px rgb(142, 180, 157);
