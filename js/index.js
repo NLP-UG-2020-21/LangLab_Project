@@ -7,9 +7,9 @@ const sendButton = document.getElementById("send-button")
 
 //edit this function to change what the chatbot says
 const chatbotResponse = () => {
+    let userName = document.getElementById("name-box").value
     let urlUserMessage = lastUserMessage.replace("/\s/g", "%20");
-    let urlUserName = "user" + Math.floor(Math.random() * 101).toString();
-    fetch("https://ai-chatbot.p.rapidapi.com/chat/free?message=" + urlUserMessage +"%3F&uid=" + urlUserName, {
+    fetch("https://ai-chatbot.p.rapidapi.com/chat/free?message=" + urlUserMessage +"%3F&uid=" + userName, {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "ai-chatbot.p.rapidapi.com",
@@ -24,7 +24,7 @@ const chatbotResponse = () => {
             //outputs the last few array elements of messages to html
             for (let i = 1; i < 8; i++) {
                 if (messages[messages.length - i]) {
-                    document.getElementById("chatlog" + i).innerHTML = messages[messages.length - i]
+                    document.getElementById("chatlog" + i).innerHTML = messages[messages.length - i];
                 }
             }
         });
@@ -33,20 +33,25 @@ const chatbotResponse = () => {
 //this runs each time enter is pressed.
 //It controls the overall input and output
 const newEntry = () => {
-    //if the message from the user isn't empty then run
-    if (document.getElementById("chatbox").value !== "") {
-        //pulls the value from the chatbox ands sets it to lastUserMessage
-        lastUserMessage = document.getElementById("chatbox").value;
-        //sets the chat box to be clear
-        document.getElementById("chatbox").value = "";
-        //adds the value of the chatbox to the array messages
-        messages.push(lastUserMessage);
-        //sets the variable botMessage in response to lastUserMessage
-        chatbotResponse()
+    let userName = document.getElementById("name-box").value
+    if (userName === "") {
+        alert("You need to input your name!");
+    } else {
+        //if the message from the user isn't empty then run
+        if (document.getElementById("chatbox").value !== "") {
+            //pulls the value from the chatbox ands sets it to lastUserMessage
+            lastUserMessage = document.getElementById("chatbox").value;
+            //sets the chat box to be clear
+            document.getElementById("chatbox").value = "";
+            //adds the value of the chatbox to the array messages
+            messages.push(lastUserMessage);
+            //sets the variable botMessage in response to lastUserMessage
+            chatbotResponse();
+        }
     }
 }
 
-//if the key pressed is 'enter' runs the function newEntry()
+// if the key pressed is 'enter' runs the function newEntry()
 const keyPress = event => {
     const x = event || window.event;
     const key = (x.keyCode || x.which);
@@ -67,5 +72,5 @@ function placeHolder() {
     document.getElementById("chatbox").placeholder = "";
 }
 
-//runs the keypress() function when a key is pressed
+// runs the keypress() function when a key is pressed
 document.onkeypress = keyPress;

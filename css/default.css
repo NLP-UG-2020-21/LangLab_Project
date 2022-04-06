@@ -31,6 +31,58 @@ section {
     opacity: 1;
 }
 
+#name-box {
+    font-size: large;
+    box-shadow: -2px -2px 2px 2px rgb(142, 180, 157);
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    text-align: center;
+    padding:5px 10px;
+    margin: auto;
+    position: relative;
+}
+
+#name-box:hover {
+ content: 'e.g. name or nickname';
+}
+
+.container {
+    width: 400px;
+    margin: 0 auto;
+  }
+  
+ .form-control {
+    position: relative;
+ }
+    
+
+#submit-button {
+    font-size: medium;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    box-shadow: 2px 2px rgb(84, 136, 105);
+    height: 25px;
+    padding:5px 10px;
+    background-color: #fcf9f9;
+    color:rgb(84, 136, 105);
+    border-radius: 5px;
+    margin-top: -30px;
+    margin-right: -25px;
+    
+}
+#submit-button:hover {
+    background-color: #cfcccc;
+    color: rgb(73, 119, 92);
+}
+
+#submit-button:active {
+  background-color: #77a179;
+  color:rgb(217, 238, 228);
+  box-shadow: 0 5px #666;
+  transform: translateY(1px);
+}
+
 #chatbox {
     font-size: large;
     box-shadow: 2px 2px rgb(142, 180, 157);
