@@ -22,8 +22,16 @@
     font: normal 36px 'Monstserrat';
 }
 
+.dark-theme .footer__site-title {
+    color: white;
+}
+
 .footer__site-title span {
     color: rgb(52, 165, 108);
+}
+
+.dark-theme .footer__site-title span {
+    color: rgb(73, 228, 151);
 }
 
 .footer__copyright {
@@ -35,6 +43,11 @@
     display: flex;
     gap: 16px;
     flex-flow: row wrap;
+}
+
+.dark-theme .footer__contact-info,
+.dark-theme .footer__contact-info a {
+    color: white;
 }
 
 .footer__contact-item {
@@ -69,7 +82,80 @@
     margin: 0 0 4px 0;
 }
 
-@media all and (min-width: 768px) {
+.footer__dark-label {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.footer__dark-checkbox-container {
+    width: 48px;
+    height: 24px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.footer__dark-checkbox {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.footer__dark-switch {
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: green;
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer__dark-switch::before {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: -50px;
+    display: block;
+    content: '';
+    width: 48px;
+    background: lightgreen;
+}
+
+.footer__dark-switch::after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: green;
+    z-index: 3;
+    display: block;
+    height: 20px;
+    width: 20px;
+    content: '';
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.footer__dark-checkbox:checked + .footer__dark-switch {
+    left: calc(100% - 2px - 20px);
+}
+
+.footer__dark-checkbox:checked + .footer__dark-switch::after {
+    left: calc(100% - 20px);
+}
+
+.footer__dark-checkbox:checked + .footer__dark-switch::before {
+    left: -36px;
+}
+
+@media all and (min-width: 850px) {
     .footer {
         flex-direction: row;
         align-items: flex-start;
