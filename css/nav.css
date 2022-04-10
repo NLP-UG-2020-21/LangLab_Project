@@ -2,7 +2,6 @@ header {
     min-height: 100px;
     font-family: 'Montserrat', serif;
     font-size: 18px;
-    background-color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -80,6 +79,10 @@ header {
     background: white;
     flex-direction: column;
     padding: 80px 50px;
+}
+
+.dark-theme .header-nav__list {
+    background-color: rgb(28, 36, 29);
 }
 
 .header--active .header-nav__list {

@@ -3,6 +3,11 @@ body {
     min-width: 320px;
     width: 100%;
     margin: 0 auto;
+    background: white;
+}
+
+body.dark-theme {
+    background: rgb(39, 60, 39);
 }
 
 section {
@@ -12,7 +17,6 @@ section {
     border-radius: 30px;
     padding: 50px 12% 0;
 }
-
 
 #chatborder {
     border-style: none;
@@ -26,9 +30,17 @@ section {
     border-radius: 5px;
 }
 
+.dark-theme #chatborder {
+    background-color: #0c130c;
+    color: white;
+}
 ::placeholder {
-    color:rgb(52, 165, 108);
+    color: rgb(52, 165, 108);
     opacity: 1;
+}
+
+.dark-theme ::placeholder {
+    color: rgb(96, 196, 144);
 }
 
 #name-box {
@@ -83,6 +95,11 @@ section {
   transform: translateY(1px);
 }
 
+.dark-theme #name-box {
+    background-color: rgb(74, 143, 85);
+    color: white;
+}
+
 #chatbox {
     font-size: large;
     box-shadow: 2px 2px rgb(142, 180, 157);
@@ -93,13 +110,18 @@ section {
     border-radius: 5px;
 }
 
-input[type=submit] {
+.dark-theme #chatbox {
+    background-color: rgb(74, 143, 85);
+    color: white;
+}
+
+input[type='submit'] {
     font-size: large;
-    color: rgb(52, 165, 108);;
+    color: rgb(52, 165, 108);
     box-shadow: 2px 2px rgb(142, 180, 157);
-    padding:5px 15px;
+    padding: 5px 15px;
     background-color: #ffffff;
-    border:0 none;
+    border: 0 none;
     cursor: pointer;
     height: 30px;
     -webkit-border-radius: 5px;
@@ -108,8 +130,17 @@ input[type=submit] {
     width: 15%;
 }
 
-input[type=submit]:hover {
+.dark-theme input[type='submit'] {
+    color: white;
+    background-color: rgb(74, 143, 85);
+}
+
+input[type='submit']:hover {
     background-color: rgb(217, 238, 228);
+}
+
+.dark-theme input[type='submit']:hover {
+    background-color: rgb(110, 218, 128);
 }
 
 h1 {

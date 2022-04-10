@@ -3,45 +3,63 @@
     <head>
         <link rel="stylesheet" href="css/default.css" />
         <link rel="stylesheet" href="css/normalization.css" />
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"/>
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+        />
         <link rel="stylesheet" href="css/nav.css" />
         <link rel="stylesheet" href="css/footer.css" />
         <link rel="stylesheet" href="css/common.css" />
         <script src="js/index.js" async defer></script>
+        <script src="js/nav.js" async defer></script>
         <title>Chatbot</title>
-        <meta name="author" content="Krystian Borkowski, Klaudia Ceglarz, Dagmara Solska"/>
+        <meta
+            name="author"
+            content="Krystian Borkowski, Klaudia Ceglarz, Dagmara Solska"
+        />
         <meta name="description" content="Our first chatbot" />
         <meta name="keywords" content="chatbot" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body>
-        <header class="animate__animated animate__fadeInDown">
+        <header class="header animate__animated animate__fadeInDown">
             <img id="logo" src="images/logo.png" alt="logo" />
 
             <nav id="header-nav">
-                <a href="#header-nav__hamburger-toggle" id="header-nav__hamburger-toggle">
+                <button class="header-nav__hamburger-toggle">
                     <i class="fa fa-bars header-nav__hamburger"></i>
-                </a>
-                <ul id="header-nav__list">
-                    <li id="header-nav__hamburger-close">
-                        <a href="#header-nav__hamburger-close">
-                            <i class="fa fa-close"></i>
-                        </a>
+                    <i class="fa fa-close"></i>
+                </button>
+                <ul class="header-nav__list">
+                    <li class="header-nav__list-item">
+                        <a class="header-nav__link" href="index.html">Home</a>
                     </li>
                     <li class="header-nav__list-item">
-                        <a class="header-nav__link header-nav__link--active" href="index.html">Home</a>
+                        <a class="header-nav__link" href="html/about.html"
+                            >About Us</a
+                        >
                     </li>
                     <li class="header-nav__list-item">
-                        <a class="header-nav__link" href="html/about.html">About Us</a>
+                        <a class="header-nav__link" href="html/resources.html"
+                            >Resources</a
+                        >
                     </li>
-                    <li class="header-nav__list-item">
-                        <a class="header-nav__link" href="html/resources.html">Resources</a>
-                    </li>
-                    <li class="header-nav__list-item">
-                        <a class="header-nav__link" href="html/contact.html">Contact Us</a>
+                    <li class="header-nav__list-item header-nav__link--active">
+                        <a class="header-nav__link" href="html/contact.html"
+                            >Contact Us</a
+                        >
                     </li>
                 </ul>
             </nav>
@@ -56,7 +74,7 @@
             </div>
             </form>
             </div>
-            <div id='chatborder'>
+            <div id="chatborder">
                 <p id="chatlog7" class="chatlog">&nbsp;</p>
                 <p id="chatlog6" class="chatlog">&nbsp;</p>
                 <p id="chatlog5" class="chatlog">&nbsp;</p>
@@ -64,7 +82,19 @@
                 <p id="chatlog3" class="chatlog">&nbsp;</p>
                 <p id="chatlog2" class="chatlog">&nbsp;</p>
                 <p id="chatlog1" class="chatlog">&nbsp;</p>
-                <label for="chatbox"></label><input type="text" name="chat" id="chatbox" placeholder="Hi there! Type here to talk to me." onfocus="placeHolder()"><input id="send-button" name="send-button" type="submit" value="Send">
+                <label for="chatbox"></label
+                ><input
+                    type="text"
+                    name="chat"
+                    id="chatbox"
+                    placeholder="Hi there! Type here to talk to me."
+                    onfocus="placeHolder()"
+                /><input
+                    id="send-button"
+                    name="send-button"
+                    type="submit"
+                    value="Send"
+                />
             </div>
         </section>
         <footer class="footer animate__animated animate__fadeInUp">
@@ -74,6 +104,18 @@
             </div>
             <ul class="footer__contact-info">
                 <li class="footer__contact-item">
+                    <label class="footer__dark-label">
+                        <div class="footer__dark-checkbox-container">
+                            <input
+                                type="checkbox"
+                                class="footer__dark-checkbox"
+                            />
+                            <span class="footer__dark-switch"></span>
+                        </div>
+                        <span class="footer__dark-text">Dark mode</span>
+                    </label>
+                </li>
+                <li class="footer__contact-item">
                     <i class="fa fa-map-marker footer__contact-icon"></i>
                     <p><span>Tricity</span><span>Poland</span></p>
                 </li>
@@ -81,7 +123,11 @@
                 <li class="footer__contact-item">
                     <i class="fa fa-envelope footer__contact-icon"></i>
                     <p>
-                        <a class="basic-link" href="mailto:calmebot.langlab@gmail.com">calmebot.langlab@gmail.com</a>
+                        <a
+                            class="basic-link"
+                            href="mailto:calmebot.langlab@gmail.com"
+                            >calmebot.langlab@gmail.com</a
+                        >
                     </p>
                 </li>
             </ul>
@@ -89,7 +135,7 @@
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous">
-        </script>
+            crossorigin="anonymous"
+        ></script>
     </body>
 </html>
