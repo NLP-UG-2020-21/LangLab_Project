@@ -65,14 +65,14 @@
             </nav>
         </header>
         <section>
+            <div class="container">
+             <form action="">
             <div class="form-control">
-                <label for="name-box"></label
-                ><input
-                    type="text"
-                    id="name-box"
-                    placeholder="Enter your name"
-                    required
-                />
+                <input type="text" id="name-box" placeholder="Enter identification..." required  onfocus="this.placeholder=''" 
+                onblur="this.placeholder='Enter identification...'" />
+                <input type="button" id="submit-button" value="Submit"  style="float: right;">
+            </div>
+            </form>
             </div>
             <div id="chatborder">
                 <p id="chatlog7" class="chatlog">&nbsp;</p>
