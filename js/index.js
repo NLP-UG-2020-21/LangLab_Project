@@ -3,7 +3,8 @@ let messages = [], //array that hold the record of each string in chat
     botMessage = '', //var keeps track of what the chatbot is going to say
     botName = 'Eva'; //name of the chatbot
 
-const sendButton = document.getElementById('send-button');
+const sendButton = document.getElementById('send-button'); 
+const submitButton = document.getElementById('submit-button');
 
 //edit this function to change what the chatbot says
 const chatbotResponse = () => {
@@ -94,5 +95,19 @@ function placeHolder() {
     document.getElementById('chatbox').placeholder = '';
 }
 
+// hides text input upon clicking on submit button
+function toggle() {
+    let element = document.getElementById('name-box');
+  
+    if ( element.style.display!='none' ) {
+      element.style.display='none';
+    } else {
+      element.style.display='';
+    }
+  }
+// disables submit button on click
+  submitButton.addEventListener('click', function(event) {
+      event.target.disabled = true;
+  });
 // runs the keypress() function when a key is pressed
 document.onkeypress = keyPress;

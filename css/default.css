@@ -17,18 +17,25 @@ section {
     border-radius: 30px;
     padding: 50px 12% 0;
 }
-
 #chatborder {
     border-style: none;
     background-color: #e4f0e4;
     border-width: thin;
-    margin: auto;
-    padding: 20px 25px 25px;
     box-shadow: 0 0 2px 2px rgb(184, 182, 182);
-    width: 800px;
-    height: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 15px;
     border-radius: 5px;
-}
+  }
+  
+.chatlog {
+     font: 15px;
+  }
 
 .dark-theme #chatborder {
     background-color: #0c130c;
@@ -49,14 +56,11 @@ section {
     height: 30px;
     border-radius: 5px;
     display: flex;
+    top: 20px;
     text-align: center;
     padding:5px 10px;
     margin: auto;
     position: relative;
-}
-
-#name-box:hover {
- content: 'e.g. name or nickname';
 }
 
 .container {
@@ -79,7 +83,7 @@ section {
     background-color: #fcf9f9;
     color:rgb(84, 136, 105);
     border-radius: 5px;
-    margin-top: -30px;
+    margin-top: -15px;
     margin-right: -25px;
     
 }
@@ -108,8 +112,12 @@ section {
     margin-top: 75px;
     top: 60px;
     border-radius: 5px;
+    overflow: hidden;
 }
 
+#chatlog {
+    font: 5px;
+}
 .dark-theme #chatbox {
     background-color: rgb(74, 143, 85);
     color: white;
@@ -128,7 +136,10 @@ input[type='submit'] {
     border-radius: 5px;
     margin-left: 20px;
     width: 15%;
+
 }
+
+
 
 .dark-theme input[type='submit'] {
     color: white;
