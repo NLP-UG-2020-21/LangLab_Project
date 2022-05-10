@@ -1,0 +1,8 @@
+{
+  "main": {
+    "accept": ["yes", "yup"],
+    "decline": ["no", "nope"],
+    "dialogue_start": ["i feel really anxious today", "i have so much work", "i can not deal with the pressure and stress"],
+    "calming_scenarios": [[], [], []]
+  }
+}
