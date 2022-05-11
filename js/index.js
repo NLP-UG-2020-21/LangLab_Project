@@ -1,14 +1,7 @@
 const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
-
-const BOT_MSGS = [
-    "Hi, how are you?",
-    "Ohh... I can't understand what you trying to say. Sorry!",
-    "I like to play games... But I don't know how to play!",
-    "Sorry if my answers are not relevant. :))",
-    "I feel sleepy! :("
-];
+const submitButton = document.getElementById('submit-button');
 
 // Icons made by Freepik from www.flaticon.com
 const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
@@ -28,7 +21,7 @@ msgerForm.addEventListener("submit", event => {
         appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
         msgerInput.value = "";
 
-        botResponse();
+        botResponse(msgText);
     }
 });
 
@@ -51,14 +44,35 @@ function appendMessage(name, img, side, text) {
     msgerChat.scrollTop += 500;
 }
 
-function botResponse() {
-    const r = random(0, BOT_MSGS.length - 1);
-    const msgText = BOT_MSGS[r];
-    const delay = msgText.split(" ").length * 100;
 
-    setTimeout(() => {
-        appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-    }, delay);
+const patterns = [/i feel\s?\w+\s(exhausted|tired|depressed)/, /i can not deal with/, /dasdasd/]
+
+
+function botResponse(userMessage) {
+    // const r = random(0, BOT_MSGS.length - 1);
+    let userName = document.getElementById('name-box').value;
+    let urlUserMessage = userMessage.replace(/\s/g, '%20');
+
+
+    fetch('https://ai-chatbot.p.rapidapi.com/chat/free?message=' + urlUserMessage + '%3F&uid=' + userName,
+        {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-host': 'ai-chatbot.p.rapidapi.com',
+                'x-rapidapi-key':
+                    'c78749d9f1msh0f8f753e4481a33p1d4b75jsn9fb4ac975528',
+            },
+        }
+    )
+    .then((response) => response.json())
+    .then((response) => {
+        //outputs the last few array elements of messages to html
+        const msgText = response['chatbot']['response'];
+        const delay = msgText.split(" ").length * 100;
+        setTimeout(() => {
+            appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+        }, delay);
+    })
 }
 
 // Utils
