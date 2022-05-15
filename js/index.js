@@ -4,8 +4,8 @@ const msgerChat = get(".msger-chat");
 const submitButton = document.getElementById('submit-button');
 
 // Icons made by Freepik from www.flaticon.com
-const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
-const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
+const BOT_IMG = "images/chatbot_icon.png";
+const PERSON_IMG = "images/user_icon.png";
 const BOT_NAME = "BOT";
 const PERSON_NAME = "Sajad";
 
@@ -96,9 +96,9 @@ submitButton.addEventListener('click', function(event) {
     event.target.disabled = true;
 });
 
-// hides text input upon clicking on submit button
+// hides header upon clicking on submit button
 function toggle() {
-    let element = document.getElementById('name-box');
+    let element = document.getElementById('msger-header');
 
     if ( element.style.display!=='none' ) {
       element.style.display='none';
