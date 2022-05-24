@@ -10,7 +10,7 @@ body {
 }
 
 body.dark-theme {
-    background: rgb(39, 60, 39);
+    background: #4e4c4e;
 }
 section {
     width: 100%;
@@ -41,7 +41,7 @@ section {
     display: flex;
     top: 20px;
     text-align: center;
-    padding:5px 10px;
+    padding: 5px 10px;
     margin: auto;
     position: relative;
 }
@@ -49,8 +49,8 @@ section {
 .container {
     width: 400px;
     margin: 0 auto;
-  }
-  
+}
+
 .form-control {
     position: relative;
 }
@@ -58,16 +58,15 @@ section {
 #submit-button {
     font-size: medium;
     text-transform: uppercase;
-    letter-spacing: .2rem;
+    letter-spacing: 0.2rem;
     box-shadow: 2px 2px rgb(84, 136, 105);
     height: 25px;
-    padding:5px 10px;
+    padding: 5px 10px;
     background-color: #fcf9f9;
-    color:rgb(84, 136, 105);
+    color: rgb(84, 136, 105);
     border-radius: 5px;
     margin-top: -15px;
     margin-right: -25px;
-    
 }
 #submit-button:hover {
     background-color: #cfcccc;
@@ -75,10 +74,10 @@ section {
 }
 
 #submit-button:active {
-  background-color: #77a179;
-  color:rgb(217, 238, 228);
-  box-shadow: 0 5px #666;
-  transform: translateY(1px);
+    background-color: #77a179;
+    color: rgb(217, 238, 228);
+    box-shadow: 0 5px #666;
+    transform: translateY(1px);
 }
 
 .dark-theme #name-box {
@@ -115,7 +114,6 @@ input[type='submit'] {
     border-radius: 5px;
     margin-left: 20px;
     width: 15%;
-
 }
 
 .dark-theme input[type='submit'] {
@@ -213,12 +211,18 @@ html {
     background-size: contain;
     border-radius: 50%;
 }
+
 .msg-bubble {
     max-width: 450px;
     padding: 15px;
     border-radius: 15px;
     background: var(--left-msg-bg);
 }
+
+.dark-theme .msg-bubble {
+    color: rgb(52, 165, 108);
+}
+
 .msg-info {
     display: flex;
     justify-content: space-between;
@@ -245,6 +249,11 @@ html {
     color: #fff;
     border-bottom-right-radius: 0;
 }
+
+.dark-theme .right-msg .msg-bubble {
+    background: #438c69;
+}
+
 .right-msg .msg-img {
     margin: 0 0 0 10px;
 }
@@ -254,6 +263,10 @@ html {
     padding: 10px;
     border-top: var(--border);
     background: #eee;
+}
+
+.dark-theme .msger-inputarea {
+    background: #676667;
 }
 .msger-inputarea * {
     padding: 10px;
