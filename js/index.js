@@ -96,9 +96,9 @@ submitButton.addEventListener('click', function(event) {
     event.target.disabled = true;
 });
 
-// hides text input upon clicking on submit button
+// hides header upon clicking on submit button
 function toggle() {
-    let element = document.getElementById('name-box');
+    let element = document.getElementById('msger-header');
 
     if ( element.style.display!=='none' ) {
       element.style.display='none';
