@@ -60,12 +60,12 @@ section {
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     box-shadow: 2px 2px rgb(84, 136, 105);
-    height: 25px;
+    height: 28px;
     padding: 5px 10px;
     background-color: #fcf9f9;
     color: rgb(84, 136, 105);
     border-radius: 5px;
-    margin-top: -15px;
+    margin-top: -10px;
     margin-right: -25px;
 }
 #submit-button:hover {
@@ -114,6 +114,7 @@ input[type='submit'] {
     border-radius: 5px;
     margin-left: 20px;
     width: 15%;
+    text-align: center;
 }
 
 .dark-theme input[type='submit'] {
@@ -173,12 +174,11 @@ html {
 }
 
 .msger-header {
+    box-sizing: border-box;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    border-bottom: var(--border);
-    background: #eee;
-    color: #666;
+    background-color: rgb(137, 189, 137, 0.6);
 }
 
 .msger-chat {
@@ -245,7 +245,7 @@ html {
     flex-direction: row-reverse;
 }
 .right-msg .msg-bubble {
-    background: var(--right-msg-bg);
+    background-color: rgb(137, 189, 137);
     color: #fff;
     border-bottom-right-radius: 0;
 }
@@ -280,14 +280,14 @@ html {
 }
 .msger-send-btn {
     margin-left: 10px;
-    background-color: rgb(0, 196, 65);
+    background-color: rgb(137, 189, 137);
     color: #fff;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.23s;
 }
 .msger-send-btn:hover {
-    background: rgb(0, 180, 50);
+    background-color: rgb(129, 183, 129);
 }
 
 .msger-chat {
