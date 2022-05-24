@@ -1,5 +1,5 @@
 body {
-    max-width: 1200px;
+    max-width: 1400px;
     min-width: 320px;
     width: 100%;
     margin: 0 auto;
@@ -18,6 +18,10 @@ section {
     text-align: left;
     border-radius: 30px;
     padding: 50px 12% 0;
+}
+
+.section--small-padding {
+    padding: 10px 4% 0;
 }
 
 .dark-theme {
@@ -39,10 +43,9 @@ section {
     height: 30px;
     border-radius: 5px;
     display: flex;
-    top: 20px;
     text-align: center;
     padding: 5px 10px;
-    margin: auto;
+    margin-right: 8px;
     position: relative;
 }
 
@@ -53,6 +56,9 @@ section {
 
 .form-control {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #submit-button {
@@ -65,8 +71,6 @@ section {
     background-color: #fcf9f9;
     color: rgb(84, 136, 105);
     border-radius: 5px;
-    margin-top: -10px;
-    margin-right: -25px;
 }
 #submit-button:hover {
     background-color: #cfcccc;
@@ -81,8 +85,8 @@ section {
 }
 
 .dark-theme #name-box {
-    background-color: rgb(74, 143, 85);
-    color: white;
+    background-color: white;
+    color: rgb(52, 165, 108);
 }
 
 /*#chatbox {*/
@@ -164,9 +168,7 @@ html {
     flex-flow: column wrap;
     justify-content: space-between;
     width: 100%;
-    max-width: 867px;
-    margin: 25px 10px;
-    height: 500px;
+    height: 600px;
     border: var(--border);
     border-radius: 5px;
     background: var(--msger-bg);
@@ -179,6 +181,10 @@ html {
     display: flex;
     justify-content: space-between;
     background-color: rgb(137, 189, 137, 0.6);
+}
+
+.dark-theme .msger-header {
+    background: #676667;
 }
 
 .msger-chat {
@@ -213,6 +219,7 @@ html {
 }
 
 .msg-bubble {
+    flex: 1;
     max-width: 450px;
     padding: 15px;
     border-radius: 15px;
@@ -265,6 +272,11 @@ html {
     background: #eee;
 }
 
+.msger-inputarea label {
+    display: flex;
+    width: 100%;
+    flex: 1;
+}
 .dark-theme .msger-inputarea {
     background: #676667;
 }
@@ -275,7 +287,7 @@ html {
     font-size: 1em;
 }
 .msger-input {
-    flex: 1;
+    width: 100%;
     background: #ddd;
 }
 .msger-send-btn {
@@ -283,8 +295,13 @@ html {
     background-color: rgb(137, 189, 137);
     color: #fff;
     font-weight: bold;
+    padding: 10px 30px;
     cursor: pointer;
     transition: background 0.23s;
+}
+
+.dark-theme .msger-send-btn {
+    background: #438c69;
 }
 .msger-send-btn:hover {
     background-color: rgb(129, 183, 129);
@@ -293,4 +310,50 @@ html {
 .msger-chat {
     background-color: #fcfcfe;
     background-size: 500px;
+}
+
+@media all and (max-width: 580px) {
+    section {
+        padding: 50px 20px;
+    }
+
+    .msger {
+        margin: 0;
+        width: 100%;
+    }
+
+    .msger-header {
+        width: 100%;
+    }
+
+    .form-control {
+        flex-direction: column;
+    }
+
+    #name-box {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    #submit-button {
+        padding: 5px 20px;
+    }
+
+    .msger-inputarea {
+        flex-direction: column;
+    }
+
+    .msger-inputarea label {
+        padding: 0;
+    }
+
+    .msger-send-btn {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .msg-img {
+        width: 40px;
+        height: 40px;
+    }
 }

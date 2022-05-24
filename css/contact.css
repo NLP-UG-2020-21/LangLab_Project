@@ -1,6 +1,11 @@
 .contact-box {
     display: flex;
     flex-direction: column-reverse;
+    width: 100%;
+}
+
+.contact__section-title {
+    margin-bottom: 15px;
 }
 
 .contact__form {
@@ -28,6 +33,10 @@
     font-weight: bold;
 }
 
+.contact__label span {
+    margin-bottom: 4px;
+}
+
 .contact__label:not(:last-child) {
     margin-bottom: 10px;
 }
@@ -40,9 +49,19 @@
     border-radius: 10px;
 }
 
+.dark-theme .contact__input,
+.dark-theme .contact__textarea {
+    background: #ddd;
+}
+
 .contact__input:focus::placeholder,
 .contact__textarea:focus::placeholder {
     color: silver;
+}
+
+.dark-theme .contact__input::placeholder,
+.dark-theme .contact__textarea::placeholder {
+    color: #838383;
 }
 .contact__textarea {
     height: 200px;
@@ -62,6 +81,11 @@
     cursor: pointer;
     box-shadow: 0 2px 10px 1px silver;
 }
+
+.dark-theme .contact__btn {
+    box-shadow: 0 2px 10px 1px #3a3a3a;
+}
+
 .contact__info {
     display: flex;
     flex-direction: column;
@@ -71,6 +95,10 @@
 .contact__info-item {
     display: flex;
     align-items: center;
+}
+
+.contact__info-item:first-child {
+    margin-bottom: 8px;
 }
 
 @media all and (min-width: 850px) {
