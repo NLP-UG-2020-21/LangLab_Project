@@ -3,6 +3,7 @@
 }
 .card {
     color: white;
+    background-color:  rgb(137, 189, 137);
     float: left;
     width: calc(25% - 20px);
     padding: 10px;
@@ -11,6 +12,16 @@
     height: 250px;
 }
 
+.dark-theme .card {
+    color: white;
+    background-color: #438c69;
+    float: left;
+    width: calc(25% - 20px);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    height: 250px;
+}
 .card p {
     font-size: 18px;
 }

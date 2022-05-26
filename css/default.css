@@ -49,6 +49,18 @@ section {
     position: relative;
 }
 
+.dark-theme #name-box {
+    font-size: large;
+    box-shadow: -2px -2px 2px 2px #438c69;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    text-align: center;
+    padding: 5px 10px;
+    margin-right: 8px;
+    position: relative; 
+}
+
 .container {
     width: 400px;
     margin: 0 auto;
@@ -74,6 +86,10 @@ section {
 }
 #submit-button:hover {
     background-color: #cfcccc;
+    color: rgb(137, 189, 137);
+}
+.darkmode #submit-button:hover {
+    background-color: #cfcccc;
     color: rgb(73, 119, 92);
 }
 
@@ -84,21 +100,22 @@ section {
     transform: translateY(1px);
 }
 
-.dark-theme #name-box {
-    background-color: white;
-    color: rgb(52, 165, 108);
+.dark-theme #submit-button {
+    font-size: medium;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    box-shadow: 2px 2px #438c69;
+    height: 28px;
+    padding: 5px 10px;
+    background-color: #fcf9f9;
+    color: rgb(84, 136, 105);
+    border-radius: 5px;
 }
 
-/*#chatbox {*/
-/*    font-size: large;*/
-/*    box-shadow: 2px 2px rgb(142, 180, 157);*/
-/*    height: 30px;*/
-/*    width: 80%;*/
-/*    margin-top: 75px;*/
-/*    top: 60px;*/
-/*    border-radius: 5px;*/
-/*    overflow: hidden;*/
-/*}*/
+.dark-theme #name-box {
+    background-color: white;
+    color: #438c69;
+}
 
 .dark-theme #chatbox {
     background-color: rgb(74, 143, 85);
@@ -131,7 +148,7 @@ input[type='submit']:hover {
 }
 
 .dark-theme input[type='submit']:hover {
-    background-color: rgb(110, 218, 128);
+    background-color: #438c69;
 }
 
 h1 {
@@ -148,7 +165,6 @@ pre {
     --msger-bg: #fff;
     --border: 2px solid #ddd;
     --left-msg-bg: #ececec;
-    --right-msg-bg: #579ffb;
 }
 
 html {
@@ -213,7 +229,7 @@ html {
     width: 50px;
     height: 50px;
     margin-right: 10px;
-    background: rgb(231, 230, 230) center;
+    background: rgb(235, 232, 232) center;
     background-size: contain;
     border-radius: 50%;
 }
@@ -304,8 +320,13 @@ html {
     background: #438c69;
 }
 .msger-send-btn:hover {
-    background-color: rgb(129, 183, 129);
+    background-color: rgb(129, 178, 129);
 }
+
+.dark-theme .msger-send-btn:hover {
+    background-color: #3b785b;
+}
+
 
 .msger-chat {
     background-color: #fcfcfe;

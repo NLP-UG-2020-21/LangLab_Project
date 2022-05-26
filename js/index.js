@@ -5,7 +5,9 @@ const submitButton = document.getElementById('submit-button');
 
 // Icons made by Freepik from www.flaticon.com
 const BOT_IMG = "images/chatbot_icon.png";
+const BOT_IMG_DARK = "images/chatbot_icon_darkmode.png";
 const PERSON_IMG = "images/user_icon.png";
+const PERSON_IMG_DARK = "images/user_icon_darkmode.png";
 const BOT_NAME = "BOT";
 const PERSON_NAME = "Sajad";
 

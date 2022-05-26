@@ -69,13 +69,13 @@
 }
 
 .contact__textarea::placeholder {
-    color: rgb(52, 165, 108);
+    color:  rgb(137, 189, 137);
 }
 .contact__btn {
     padding: 12px;
     font-size: 24px;
     border-radius: 10px;
-    background: rgb(52, 165, 108);
+    background:  rgb(137, 189, 137);
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -84,6 +84,7 @@
 
 .dark-theme .contact__btn {
     box-shadow: 0 2px 10px 1px #3a3a3a;
+    background-color: #438c69;
 }
 
 .contact__info {

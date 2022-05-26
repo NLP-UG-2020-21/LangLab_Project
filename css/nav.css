@@ -26,9 +26,20 @@ header {
     width: 250px;
 }
 
-#header-nav {
+#logo_darkmode {
+    display: none;
+}
+
+.dark-theme #logo {
+    display: none;
+}
+
+.dark-theme #logo_darkmode {
+    width: 350px;
     display: flex;
-    width: fit-content;
+}
+#header-nav {
+    display: inherit;
 }
 
 .animate__animated.animate__fadeInDown {
@@ -120,7 +131,7 @@ header {
 }
 
 .dark-theme .header-nav__link:hover {
-    background-color: #01a96b;
+    background-color: #438c69;
     color: white;
 }
 
