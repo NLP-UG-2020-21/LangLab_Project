@@ -1,7 +1,9 @@
 {
   "main": {
-    "accept": ["yes", "yup", "yeah", "sure", "definitely", "right", "that is right", "alright", "fine", "mhm"],
-    "decline": ["no", "nope", "i do not know", "i have not"],
+    "accept": ["yes", "yup", "yeah", "sure", "definitely", "right", "that is right", "alright", "fine", "mhm", "yea", "yep", "true", "all right", "surely", 
+    "sure thing", "naturally", "ok", "okay", "agreed", "yo", "absolutely", "indeed", "i have", "yes i have"],
+    "decline": ["no", "nope", "i do not know", "i have not", "nay", "never", "no way", "i do not think so", "not at all", "absolutely not", "no indeed",
+    "of course not", "not really", "no thanks", "nah", "no i have not"],
     "dialogue_start": ["i feel really anxious today", "i have so much work", "i can not deal with the pressure and stress", "i feel stupid",
     "i am stupid", "i just feel bad because i feel so stressed", "i just feel stressed about everything", "i am so scared",
     "i feel so stressed about work", "I do not know how I feel", "i can not deal with the pressure and stress", "can you help me",
