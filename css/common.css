@@ -4,6 +4,14 @@
     transition: all 0.1s ease;
 }
 
+.dark-theme .basic-link {
+    color: white;
+}
+
 .basic-link:hover {
     color: rgb(73, 73, 73);
+}
+
+.dark-theme .basic-link:hover {
+    color: rgb(191, 191, 191);
 }
