@@ -3,6 +3,7 @@
 }
 .card {
     color: white;
+    background-color:  rgb(137, 189, 137);
     float: left;
     width: calc(25% - 20px);
     padding: 10px;
@@ -11,6 +12,16 @@
     height: 250px;
 }
 
+.dark-theme .card {
+    color: white;
+    background-color: #438c69;
+    float: left;
+    width: calc(25% - 20px);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    height: 250px;
+}
 .card p {
     font-size: 18px;
 }
@@ -35,6 +46,10 @@
     color: rgb(115, 117, 116);
 }
 
+.dark-theme .card a:hover {
+    color: rgb(174, 177, 175);
+}
+
 h1 {
     display: inline-block;
     position: relative;
@@ -48,6 +63,9 @@ h1 {
 h1:hover {
     color: rgb(52, 165, 108);
 }
+.dark-theme h1:hover {
+    color: #438c69;
+}
 h1:before,
 h1:after {
     height: 14px;
@@ -59,13 +77,14 @@ h1:after {
 h1:before {
     right: 0;
     top: 0;
-    border-right: 3px solid rgb(137, 189, 137);
-    border-top: 3px solid rgb(137, 189, 137);
+    border-right: 3px solid  rgb(105, 145, 105);
+    border-top: 3px solid  rgb(105, 145, 105);
 }
 
 h1:after {
     left: 0;
     bottom: 0;
-    border-left: 3px solid rgb(137, 189, 137);
-    border-bottom: 3px solid rgb(137, 189, 137);
+    border-left: 3px solid rgb(105, 145, 105);
+    border-bottom: 3px solid  rgb(105, 145, 105);
 }
+

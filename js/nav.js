@@ -11,6 +11,8 @@ window.addEventListener('resize', () => {
     navToogleBtn.classList.remove('header-nav__hamburger-toggle--active');
 });
 
+
+window.onload = function() {
 const switchCheckbox = document.querySelector('.footer__dark-checkbox');
 const isDarkTheme = localStorage.getItem('darkTheme');
 if (isDarkTheme) {
@@ -28,4 +30,4 @@ switchCheckbox.addEventListener('change', (ev) => {
     } else {
         document.body.classList.remove('dark-theme');
     }
-});
+});}
