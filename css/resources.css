@@ -73,7 +73,6 @@ h1:after {
     position: absolute;
     content: '';
 }
-
 h1:before {
     right: 0;
     top: 0;
