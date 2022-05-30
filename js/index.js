@@ -3,9 +3,7 @@ const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
 const submitButton = document.getElementById('submit-button');
 const BOT_IMG = "images/chatbot_icon.png";
-const BOT_IMG_DARK = "images/chatbot_icon_darkmode.png";
 const PERSON_IMG = "images/user_icon.png";
-const PERSON_IMG_DARK = "images/user_icon_darkmode.png";
 const BOT_NAME = "Eva";
 const patterns = [/i(\s\w*){0,3}feel(\s\w*){0,3}(exhausted|tired|depressed)/, /i cannot deal with (\w\s?)+/];
 
@@ -112,8 +110,10 @@ submitButton.addEventListener('click', function(event) {
 const toggle = () => {
     let element = document.getElementById('msger-header');
     if ( element.style.display!=='none' ) {
-      element.style.display='none';
+        appendMessage(BOT_NAME, BOT_IMG, "left", "Hello, I'm Eva! Enter your identification and feel free " +
+            "to write what's on your mind. I'll do my best to help you.");
+        element.style.display='none';
     } else {
-      element.style.display='';
+        element.style.display='';
     }
 }
