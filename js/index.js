@@ -2,33 +2,37 @@ const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
 const submitButton = document.getElementById('submit-button');
-
-// Icons made by Freepik from www.flaticon.com
 const BOT_IMG = "images/chatbot_icon.png";
 const BOT_IMG_DARK = "images/chatbot_icon_darkmode.png";
 const PERSON_IMG = "images/user_icon.png";
 const PERSON_IMG_DARK = "images/user_icon_darkmode.png";
-const BOT_NAME = "BOT";
-const PERSON_NAME = "Sajad";
+const BOT_NAME = "Eva";
+const patterns = [/i(\s\w*){0,3}feel(\s\w*){0,3}(exhausted|tired|depressed)/, /i cannot deal with (\w\s?)+/];
 
-msgerForm.addEventListener("submit", event => {
-    event.preventDefault();
-
+const messageManage = () => {
     const msgText = msgerInput.value;
     if (!msgText) return;
     let userName = document.getElementById('name-box').value;
     if (userName === '') {
         alert('You need to input your name!');
     } else {
-        appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+        appendMessage(userName, PERSON_IMG, "right", msgText);
         msgerInput.value = "";
-
-        botResponse(msgText);
+        const isMatch = patterns.some(rx => rx.test(msgText));
+        if (isMatch) {
+            calmebotResponse();
+        } else {
+            apiResponse(msgText);
+        }
     }
+}
+
+msgerForm.addEventListener("submit", event => {
+    event.preventDefault();
+    messageManage();
 });
 
 function appendMessage(name, img, side, text) {
-    //   Simple solution for small apps
     const msgHTML = `
     <div class="msg ${side}-msg">
         <div class="msg-img" style="background-image: url(${img})"></div>
@@ -46,16 +50,25 @@ function appendMessage(name, img, side, text) {
     msgerChat.scrollTop += 500;
 }
 
+const calmebotResponse = () => {
+    let delay = 1000
+    fetch("js/corpora.json")
+    .then(response => response.json())
+    .then(json => {
+        let scenario_num = random_scenario(0, (json['main']['calming_scenarios'].length) - 1)
+        for (const msg of json['main']['calming_scenarios'][scenario_num]) {
+            console.log(msg)
+            setTimeout(() => {
+                appendMessage(BOT_NAME, BOT_IMG, "left", msg);
+            }, delay);
+            delay = delay += 2000;
+        }
+    });
+}
 
-const patterns = [/i feel\s?\w+\s(exhausted|tired|depressed)/, /i can not deal with/, /dasdasd/]
-
-
-function botResponse(userMessage) {
-    // const r = random(0, BOT_MSGS.length - 1);
+const apiResponse = (userMessage) => {
     let userName = document.getElementById('name-box').value;
     let urlUserMessage = userMessage.replace(/\s/g, '%20');
-
-
     fetch('https://ai-chatbot.p.rapidapi.com/chat/free?message=' + urlUserMessage + '%3F&uid=' + userName,
         {
             method: 'GET',
@@ -68,12 +81,10 @@ function botResponse(userMessage) {
     )
     .then((response) => response.json())
     .then((response) => {
-        //outputs the last few array elements of messages to html
         const msgText = response['chatbot']['response'];
-        const delay = msgText.split(" ").length * 100;
         setTimeout(() => {
             appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-        }, delay);
+        }, 2000);
     })
 }
 
@@ -82,14 +93,13 @@ function get(selector, root = document) {
     return root.querySelector(selector);
 }
 
-function formatDate(date) {
+const formatDate = (date) => {
     const h = "0" + date.getHours();
     const m = "0" + date.getMinutes();
-
     return `${h.slice(-2)}:${m.slice(-2)}`;
 }
 
-function random(min, max) {
+const random_scenario = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
@@ -99,9 +109,8 @@ submitButton.addEventListener('click', function(event) {
 });
 
 // hides header upon clicking on submit button
-function toggle() {
+const toggle = () => {
     let element = document.getElementById('msger-header');
-
     if ( element.style.display!=='none' ) {
       element.style.display='none';
     } else {

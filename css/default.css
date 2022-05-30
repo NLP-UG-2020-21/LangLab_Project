@@ -58,7 +58,7 @@ section {
     text-align: center;
     padding: 5px 10px;
     margin-right: 8px;
-    position: relative; 
+    position: relative;
 }
 
 .container {
@@ -163,7 +163,6 @@ pre {
 :root {
     --body-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     --msger-bg: #fff;
-    --border: 2px solid #ddd;
     --left-msg-bg: #ececec;
 }
 
@@ -229,7 +228,7 @@ html {
     width: 50px;
     height: 50px;
     margin-right: 10px;
-    background: rgb(235, 232, 232) center;
+    background: rgb(231, 230, 230) center url(/images/chatbot_icon.png);
     background-size: contain;
     border-radius: 50%;
 }
@@ -277,8 +276,17 @@ html {
     background: #438c69;
 }
 
+.dark-theme .left-msg .msg-bubble {
+    background: #676667;
+    color: #fff;
+}
+
 .right-msg .msg-img {
     margin: 0 0 0 10px;
+}
+
+.dark-theme .msg-img {
+    background-color: #676667;
 }
 
 .msger-inputarea {
