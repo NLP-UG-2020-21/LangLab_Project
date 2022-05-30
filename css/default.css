@@ -228,7 +228,7 @@ html {
     width: 50px;
     height: 50px;
     margin-right: 10px;
-    background: rgb(231, 230, 230) center url(/images/chatbot_icon.png);
+    background: rgb(231, 230, 230) center;
     background-size: contain;
     border-radius: 50%;
 }
