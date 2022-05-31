@@ -7,9 +7,12 @@ const PERSON_IMG = "images/user_icon.png";
 const BOT_NAME = "Eva";
 const patterns = [/i(\s\w*){0,3}feel(\s\w*){0,3}(exhausted|tired|depressed)/, /i cannot deal with (\w\s?)+/];
 
+let stageStatus = 0;
+
 const messageManage = () => {
+    console.log("CALLED!");
     const msgText = msgerInput.value;
-    if (!msgText) return;
+    if (!msgText || stageStatus !== 0) return;
     let userName = document.getElementById('name-box').value;
     if (userName === '') {
         alert('You need to input your name!');
@@ -25,9 +28,33 @@ const messageManage = () => {
     }
 }
 
+const handleLaterStage = (arr, stage) => {
+    console.log("LATER STAGE called");
+    console.log(arr);
+    console.log(stage);
+    const msgText = msgerInput.value;
+    // if (!msgText || stageStatus === 0) return;
+    let userName = document.getElementById('name-box').value;
+    if (userName === '') {
+        alert('You need to input your name!');
+        return;
+    } else {
+        appendMessage(userName, PERSON_IMG, "right", msgText);
+        if (msgText === "yes" || stageStatus === 1) {
+            msgerInput.value = "";
+            return arr[stage];
+        } else {
+            return false;
+        }
+    }
+
+}
+
 msgerForm.addEventListener("submit", event => {
     event.preventDefault();
-    messageManage();
+    if (stageStatus === 0) {
+        messageManage();
+    };
 });
 
 function appendMessage(name, img, side, text) {
@@ -53,13 +80,32 @@ const calmebotResponse = () => {
     fetch("js/corpora.json")
     .then(response => response.json())
     .then(json => {
-        let scenario_num = random_scenario(0, (json['main']['calming_scenarios'].length) - 1)
-        for (const msg of json['main']['calming_scenarios'][scenario_num]) {
-            console.log(msg)
-            setTimeout(() => {
-                appendMessage(BOT_NAME, BOT_IMG, "left", msg);
-            }, delay);
-            delay = delay += 2000;
+        let scenario_num = random_scenario(0, (json['main']['calming_scenarios'].length) - 1);
+        const scenario_arr = json['main']['calming_scenarios'][scenario_num];
+        for (const msg of scenario_arr) {
+            console.log(msg);
+            if (stageStatus === 0) {
+                stageStatus++;
+                setTimeout(() => {
+                    appendMessage(BOT_NAME, BOT_IMG, "left", msg);
+                }, delay);
+                delay = delay += 2000;
+                console.log("In the condition", stageStatus);
+            }
+            const answer = handleLaterStage(scenario_arr, stageStatus);
+            console.log(answer);
+            if (answer) {
+                console.log("In the second condition", stageStatus);
+                stageStatus++;
+                setTimeout(() => {
+                    appendMessage(BOT_NAME, BOT_IMG, "left", answer);
+                }, delay);
+                delay = delay += 2000;
+            } else {
+                stageStatus = 0;
+                return;
+            }
+
         }
     });
 }
