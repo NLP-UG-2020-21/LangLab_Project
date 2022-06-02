@@ -38,7 +38,12 @@ const messageManage = () => {
 }
 
 const handleCalmebotStage = (stage, msgText) => {
+    // TODO: dodać więcej wariantów wypowiedzi interpretowanych jako zgoda na kontynuację
     if (stage !== 0 && !msgText.match(/(yes|yep|yeah|ok|great|good|fine|sure)/i)) {
+        setTimeout(() => {
+            //TODO: wyłamanie się z rozmowy: tutaj należy dodać inne warianty wiadomości
+            appendMessage(BOT_NAME, BOT_IMG, "left", "Is there anything you'd like to talk about?");
+        }, 2000);
         resetCalmebotConversation();
         return;
     }
