@@ -8,53 +8,51 @@ const BOT_NAME = "Eva";
 const patterns = [/i(\s\w*){0,3}feel(\s\w*){0,3}(exhausted|tired|depressed)/, /i cannot deal with (\w\s?)+/];
 
 let stageStatus = 0;
+let currentScenarioArr = [];
+
+const resetCalmebotConversation = () => {
+    stageStatus = 0;
+    currentScenarioArr = [];
+}
 
 const messageManage = () => {
-    console.log("CALLED!");
     const msgText = msgerInput.value;
-    if (!msgText || stageStatus !== 0) return;
+    if (!msgText) return;
     let userName = document.getElementById('name-box').value;
     if (userName === '') {
         alert('You need to input your name!');
     } else {
         appendMessage(userName, PERSON_IMG, "right", msgText);
         msgerInput.value = "";
-        const isMatch = patterns.some(rx => rx.test(msgText));
-        if (isMatch) {
-            calmebotResponse();
+        if (stageStatus > 0) {
+            handleCalmebotStage(stageStatus, msgText);
         } else {
-            apiResponse(msgText);
+            const isMatch = patterns.some(rx => rx.test(msgText));
+            if (isMatch) {
+                calmebotResponse();
+            } else {
+                apiResponse(msgText);
+            }
         }
     }
 }
 
-const handleLaterStage = (arr, stage) => {
-    console.log("LATER STAGE called");
-    console.log(arr);
-    console.log(stage);
-    const msgText = msgerInput.value;
-    // if (!msgText || stageStatus === 0) return;
-    let userName = document.getElementById('name-box').value;
-    if (userName === '') {
-        alert('You need to input your name!');
+const handleCalmebotStage = (stage, msgText) => {
+    if (stage !== 0 && !msgText.match(/(yes|yep|yeah|ok|great|good|fine|sure)/i)) {
+        resetCalmebotConversation();
         return;
-    } else {
-        appendMessage(userName, PERSON_IMG, "right", msgText);
-        if (msgText === "yes" || stageStatus === 1) {
-            msgerInput.value = "";
-            return arr[stage];
-        } else {
-            return false;
-        }
     }
-
+    const messageToAppend = currentScenarioArr[stage];
+    setTimeout(() => {
+        appendMessage(BOT_NAME, BOT_IMG, "left", messageToAppend);
+    }, 2000);
+    stageStatus++;
+    if (stage >= currentScenarioArr.length - 1) resetCalmebotConversation();
 }
 
 msgerForm.addEventListener("submit", event => {
     event.preventDefault();
-    if (stageStatus === 0) {
-        messageManage();
-    };
+    messageManage();
 });
 
 function appendMessage(name, img, side, text) {
@@ -76,37 +74,13 @@ function appendMessage(name, img, side, text) {
 }
 
 const calmebotResponse = () => {
-    let delay = 1000
     fetch("js/corpora.json")
     .then(response => response.json())
     .then(json => {
         let scenario_num = random_scenario(0, (json['main']['calming_scenarios'].length) - 1);
         const scenario_arr = json['main']['calming_scenarios'][scenario_num];
-        for (const msg of scenario_arr) {
-            console.log(msg);
-            if (stageStatus === 0) {
-                stageStatus++;
-                setTimeout(() => {
-                    appendMessage(BOT_NAME, BOT_IMG, "left", msg);
-                }, delay);
-                delay = delay += 2000;
-                console.log("In the condition", stageStatus);
-            }
-            const answer = handleLaterStage(scenario_arr, stageStatus);
-            console.log(answer);
-            if (answer) {
-                console.log("In the second condition", stageStatus);
-                stageStatus++;
-                setTimeout(() => {
-                    appendMessage(BOT_NAME, BOT_IMG, "left", answer);
-                }, delay);
-                delay = delay += 2000;
-            } else {
-                stageStatus = 0;
-                return;
-            }
-
-        }
+        currentScenarioArr = [].concat(scenario_arr);
+        handleCalmebotStage(0, "");
     });
 }
 
