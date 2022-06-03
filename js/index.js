@@ -7,6 +7,14 @@ const PERSON_IMG = "images/user_icon.png";
 const BOT_NAME = "Eva";
 const patterns = [/i(\s\w*){0,3}feel(\s\w*){0,3}(exhausted|tired|depressed)/, /i cannot deal with (\w\s?)+/];
 
+let stageStatus = 0;
+let currentScenarioArr = [];
+
+const resetCalmebotConversation = () => {
+    stageStatus = 0;
+    currentScenarioArr = [];
+}
+
 const messageManage = () => {
     const msgText = msgerInput.value;
     if (!msgText) return;
@@ -16,13 +24,35 @@ const messageManage = () => {
     } else {
         appendMessage(userName, PERSON_IMG, "right", msgText);
         msgerInput.value = "";
-        const isMatch = patterns.some(rx => rx.test(msgText));
-        if (isMatch) {
-            calmebotResponse();
+        if (stageStatus > 0) {
+            handleCalmebotStage(stageStatus, msgText);
         } else {
-            apiResponse(msgText);
+            const isMatch = patterns.some(rx => rx.test(msgText));
+            if (isMatch) {
+                calmebotResponse();
+            } else {
+                apiResponse(msgText);
+            }
         }
     }
+}
+
+const handleCalmebotStage = (stage, msgText) => {
+    // TODO: dodać więcej wariantów wypowiedzi interpretowanych jako zgoda na kontynuację
+    if (stage !== 0 && !msgText.match(/(yes|yep|yeah|ok|great|good|fine|sure)/i)) {
+        setTimeout(() => {
+            //TODO: wyłamanie się z rozmowy: tutaj należy dodać inne warianty wiadomości
+            appendMessage(BOT_NAME, BOT_IMG, "left", "Is there anything you'd like to talk about?");
+        }, 2000);
+        resetCalmebotConversation();
+        return;
+    }
+    const messageToAppend = currentScenarioArr[stage];
+    setTimeout(() => {
+        appendMessage(BOT_NAME, BOT_IMG, "left", messageToAppend);
+    }, 2000);
+    stageStatus++;
+    if (stage >= currentScenarioArr.length - 1) resetCalmebotConversation();
 }
 
 msgerForm.addEventListener("submit", event => {
@@ -49,18 +79,13 @@ function appendMessage(name, img, side, text) {
 }
 
 const calmebotResponse = () => {
-    let delay = 1000
     fetch("js/corpora.json")
     .then(response => response.json())
     .then(json => {
-        let scenario_num = random_scenario(0, (json['main']['calming_scenarios'].length) - 1)
-        for (const msg of json['main']['calming_scenarios'][scenario_num]) {
-            console.log(msg)
-            setTimeout(() => {
-                appendMessage(BOT_NAME, BOT_IMG, "left", msg);
-            }, delay);
-            delay = delay += 2000;
-        }
+        let scenario_num = random_scenario(0, (json['main']['calming_scenarios'].length) - 1);
+        const scenario_arr = json['main']['calming_scenarios'][scenario_num];
+        currentScenarioArr = [].concat(scenario_arr);
+        handleCalmebotStage(0, "");
     });
 }
 
