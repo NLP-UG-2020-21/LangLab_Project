@@ -17,6 +17,7 @@ const resetCalmebotConversation = () => {
 
 const messageManage = () => {
     const msgText = msgerInput.value;
+    // TODO: dodać preprocessing
     if (!msgText) return;
     let userName = document.getElementById('name-box').value;
     if (userName === '') {
@@ -42,7 +43,9 @@ const handleCalmebotStage = (stage, msgText) => {
     if (stage !== 0 && !msgText.match(/(yes|yep|yeah|ok|great|good|fine|sure)/i)) {
         setTimeout(() => {
             //TODO: wyłamanie się z rozmowy: tutaj należy dodać inne warianty wiadomości
-            appendMessage(BOT_NAME, BOT_IMG, "left", "Is there anything you'd like to talk about?");
+            const answerDecline = ["Is there anything you'd like to talk about?", "test", "test2"]
+            let randomAnswerDecline = random_scenario(0, (answerDecline.length) - 1);
+            appendMessage(BOT_NAME, BOT_IMG, "left", answerDecline[randomAnswerDecline]);
         }, 2000);
         resetCalmebotConversation();
         return;
