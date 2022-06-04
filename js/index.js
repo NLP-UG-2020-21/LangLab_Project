@@ -39,11 +39,9 @@ const messageManage = () => {
 }
 
 const handleCalmebotStage = (stage, msgText) => {
-    // TODO: dodać więcej wariantów wypowiedzi interpretowanych jako zgoda na kontynuację
-    if (stage !== 0 && !msgText.match(/(yes|yep|yeah|ok|great|good|fine|sure)/i)) {
+    if (stage !== 0 && !msgText.match(/(yes|yep|yup|yeah|ok|okay|great|agreed|yo|absolutely|indeed|yes please|good|fine|sure|definitely|right|(that is right)|alright|mhm|yea|true|(all right)|allright|surely|(sure thing)|naturally|(why not)|(we can)|(we can|could do that))/i)) {
         setTimeout(() => {
-            //TODO: wyłamanie się z rozmowy: tutaj należy dodać inne warianty wiadomości
-            const answerDecline = ["Is there anything you'd like to talk about?", "test", "test2"]
+            const answerDecline = ["Is there anything you'd like to talk about?", "Would you like to talk about something else?", "Maybe there is something you want to share with me.", "Is there something you want to discuss?", "Feel free to tell me more about your feelings when you're ready."]
             let randomAnswerDecline = random_scenario(0, (answerDecline.length) - 1);
             appendMessage(BOT_NAME, BOT_IMG, "left", answerDecline[randomAnswerDecline]);
         }, 2000);
