@@ -39,9 +39,15 @@ const messageManage = () => {
 }
 
 const handleCalmebotStage = (stage, msgText) => {
-    if (stage !== 0 && !msgText.match(/(yes|yep|yup|yeah|ok|okay|great|agreed|yo|absolutely|indeed|yes please|good|fine|sure|definitely|right|(that is right)|alright|mhm|yea|true|(all right)|allright|surely|(sure thing)|naturally|(why not)|(we can)|(we can|could do that))/i)) {
+    if (stage !== 0 && !msgText.match(/(yes|yep|yup|yeah|ok|okay|great|agreed|yo|absolutely|indeed|yes please|good|fine|sure|definitely|right|(that is right)|alright|mhm|yea|true|(all right)|allright|surely|(sure thing)|naturally|(why not)|(we can)|(we can do that))/i)) {
         setTimeout(() => {
-            const answerDecline = ["Is there anything you'd like to talk about?", "Would you like to talk about something else?", "Maybe there is something you want to share with me.", "Is there something you want to discuss?", "Feel free to tell me more about your feelings when you're ready."]
+            const answerDecline = ["Is there anything you'd like to talk about?",
+                "Would you like to talk about something else?", "Maybe there is something you want to share with me.",
+                "Is there something you want to discuss?",
+                "Feel free to tell me more about your feelings when you're ready.",
+                "What would you like to talk about?", "I'm sure we'll find another topic to discuss.",
+                "Write me if you feel ready to share your feelings, I really could help you.",
+                "Would you like to change the topic?", "I'm always there for you, remember that."]
             let randomAnswerDecline = random_scenario(0, (answerDecline.length) - 1);
             appendMessage(BOT_NAME, BOT_IMG, "left", answerDecline[randomAnswerDecline]);
         }, 2000);
