@@ -17,7 +17,7 @@ const resetCalmebotConversation = () => {
 
 const preprocessing = (msgText) => {
     msgText = msgText.replace(/[!@#$%^&*()}{"<>/?\\]/g,'')
-        .replace(/'m/g,' am').replace(/'s/g,' is').replace(/'re/g,' are').toLowerCase()
+        .replace(/'m/g,' am').replace(/'s/g,' is').replace(/'re/g,' are').replace(/'ve/g,' have').toLowerCase()
     return msgText
 }
 
