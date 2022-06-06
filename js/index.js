@@ -16,7 +16,7 @@ const resetCalmebotConversation = () => {
 }
 
 const preprocessing = (msgText) => {
-    msgText = msgText.replace(/[!\.@#$%^&*`~()}:;\|{"<>/?\\]/g,'')
+    msgText = msgText.replace(/[!\.@#$%^&,*`~()}:;\|{"<>/?\\]/g,'')
         .replace(/'m/g,' am').replace(/'s/g,' is').replace(/'re/g,' are').replace(/'ve/g,' have').toLowerCase()
     return msgText
 }
@@ -45,7 +45,7 @@ const messageManage = () => {
 }
 
 const handleCalmebotStage = (stage, msgText) => {
-    if (stage !== 0 && !msgText.match(/(yes|yep|yup|yeah|ok|okay|great|agreed|yo|absolutely|indeed|yes please|good|fine|sure|definitely|right|(that is right)|alright|mhm|yea|true|(all right)|allright|surely|(sure thing)|naturally|(why not)|(we can)|(we can do that))/i)) {
+    if (stage !== 0 && !msgText.match(/(yes|yep|yup|yeah|ok|okay|great|agreed|yo|absolutely|indeed|yes please|good|fine|sure|definitely|right|(that is right)|alright|mhm|yea|true|(all right)|allright|surely|(sure thing)|naturally|(why not)|(we can)|(we can do that)|(that would be great)|(that would be amazing)|(great idea))/i)) {
         setTimeout(() => {
             const answerDecline = ["Is there anything you'd like to talk about?",
                 "Would you like to talk about something else?", "Maybe there is something you want to share with me.",
@@ -148,8 +148,8 @@ submitButton.addEventListener('click', function(event) {
 const toggle = () => {
     let element = document.getElementById('msger-header');
     if ( element.style.display!=='none' ) {
-        appendMessage(BOT_NAME, BOT_IMG, "left", "Hello, I'm Eva! Enter your identification and feel free " +
-            "to write what's on your mind. I'll do my best to help you.");
+        appendMessage(BOT_NAME, BOT_IMG, "left", "Hello, I'm Eva! Feel free to write what's on your mind. " +
+            "I'll do my best to help you.");
         element.style.display='none';
     } else {
         element.style.display='';
