@@ -15,9 +15,15 @@ const resetCalmebotConversation = () => {
     currentScenarioArr = [];
 }
 
+const preprocessing = (msgText) => {
+    msgText = msgText.replace(/[!\.@#$%^&*`~()}:;\|{"<>/?\\]/g,'')
+        .replace(/'m/g,' am').replace(/'s/g,' is').replace(/'re/g,' are').replace(/'ve/g,' have').toLowerCase()
+    return msgText
+}
+
 const messageManage = () => {
-    const msgText = msgerInput.value;
-    // TODO: dodać preprocessing
+    let msgText = msgerInput.value;
+    let msgTextPreprocessed = preprocessing(msgText)
     if (!msgText) return;
     let userName = document.getElementById('name-box').value;
     if (userName === '') {
@@ -26,13 +32,13 @@ const messageManage = () => {
         appendMessage(userName, PERSON_IMG, "right", msgText);
         msgerInput.value = "";
         if (stageStatus > 0) {
-            handleCalmebotStage(stageStatus, msgText);
+            handleCalmebotStage(stageStatus, msgTextPreprocessed);
         } else {
-            const isMatch = patterns.some(rx => rx.test(msgText));
+            const isMatch = patterns.some(rx => rx.test(msgTextPreprocessed));
             if (isMatch) {
                 calmebotResponse();
             } else {
-                apiResponse(msgText);
+                apiResponse(msgTextPreprocessed);
             }
         }
     }
