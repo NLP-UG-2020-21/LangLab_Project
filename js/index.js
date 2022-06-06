@@ -148,8 +148,8 @@ submitButton.addEventListener('click', function(event) {
 const toggle = () => {
     let element = document.getElementById('msger-header');
     if ( element.style.display!=='none' ) {
-        appendMessage(BOT_NAME, BOT_IMG, "left", "Hello, I'm Eva! Enter your identification and feel free " +
-            "to write what's on your mind. I'll do my best to help you.");
+        appendMessage(BOT_NAME, BOT_IMG, "left", "Hello, I'm Eva! Feel free to write what's on your mind. " +
+            "I'll do my best to help you.");
         element.style.display='none';
     } else {
         element.style.display='';
