@@ -45,7 +45,7 @@ const messageManage = () => {
 }
 
 const handleCalmebotStage = (stage, msgText) => {
-    if (stage !== 0 && !msgText.match(/(yes|yep|yup|yeah|ok|okay|great|agreed|yo|absolutely|indeed|yes please|good|fine|sure|definitely|right|(that is right)|alright|mhm|yea|true|(all right)|allright|surely|(sure thing)|naturally|(why not)|(we can)|(we can do that))/i)) {
+    if (stage !== 0 && !msgText.match(/(yes|yep|yup|yeah|ok|okay|great|agreed|yo|absolutely|indeed|yes please|good|fine|sure|definitely|right|(that is right)|alright|mhm|yea|true|(all right)|allright|surely|(sure thing)|naturally|(why not)|(we can)|(we can do that)|(that would be great)|(that would be amazing)|(great idea))/i)) {
         setTimeout(() => {
             const answerDecline = ["Is there anything you'd like to talk about?",
                 "Would you like to talk about something else?", "Maybe there is something you want to share with me.",
