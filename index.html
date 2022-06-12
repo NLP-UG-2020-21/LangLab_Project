@@ -3,40 +3,26 @@
     <head>
         <link rel="stylesheet" href="css/default.css" />
         <link rel="stylesheet" href="css/normalization.css" />
-        <link
-            href="https://fonts.googleapis.com/css?family=Montserrat"
-            rel="stylesheet"
-        />
-        <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
-        />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"/>
         <link rel="stylesheet" href="css/nav.css" />
         <link rel="stylesheet" href="css/footer.css" />
         <link rel="stylesheet" href="css/common.css" />
+        <link rel="icon" type="image/x-icon" href="images/chatbot_page_icon.png">
         <script src="js/index.js" async defer></script>
         <script src="js/nav.js" async defer></script>
-        <title>Chatbot</title>
-        <meta
-            name="author"
-            content="Krystian Borkowski, Klaudia Ceglarz, Dagmara Solska"
-        />
+        <title>CalmeBot - Innovative Soothing Chatbot</title>
+        <meta name="author" content="Krystian Borkowski, Klaudia Ceglarz, Dagmara Solska"/>
         <meta name="description" content="Our first chatbot" />
         <meta name="keywords" content="chatbot" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body>
         <header class="header animate__animated animate__fadeInDown">
-            <img id="logo" src="images/logo.png" alt="logo" />
-
+        <img id="logo" src="images/logo.png" alt="logo" />
+        <img id="logo_darkmode" src="images/logo_darkmode.png" alt="logo_darkmode" />
             <nav id="header-nav">
                 <button class="header-nav__hamburger-toggle">
                     <i class="fa fa-bars header-nav__hamburger"></i>
@@ -64,58 +50,35 @@
                 </ul>
             </nav>
         </header>
-        <section>
-            <div class="container">
-             <form action="">
-            <div class="form-control">
-                <label for="name-box"></label><input type="text" id="name-box" placeholder="Enter identification..." required onfocus="this.placeholder=''"
-                                                     onblur="this.placeholder='Enter identification...'"/>
-                <input type="button" id="submit-button" onclick="toggle();" value="Submit" style="float: right;">
+        <section class="section--small-padding">
+            <div class="msger">
+                <header class="msger-header" id="msger-header">
+                    <div class="container">
+                        <form action="">
+                            <div class="form-control">
+                                <label for="name-box"></label
+                                ><input type="text" id="name-box" placeholder="Enter identification..." required
+                                    onfocus="this.placeholder=''"
+                                    onblur="this.placeholder='Enter identification...'"/>
+                                <input
+                                    type="button"
+                                    id="submit-button"
+                                    onclick="toggle();"
+                                    value="Submit"
+                                />
+                            </div>
+                        </form>
+                    </div>
+                </header>
+                <main class="msger-chat" style="background-image: url(images/chatbot_background.png)">
+                </main>
+                <form class="msger-inputarea">
+                    <label>
+                        <input type="text" class="msger-input" placeholder="Enter your message..."/>
+                    </label>
+                    <button type="submit" class="msger-send-btn">Send</button>
+                </form>
             </div>
-            </form>
-            </div>
-        <div class="msger">
-            <main class="msger-chat">
-                <div class="msg left-msg">
-                  <div
-                   class="msg-img"
-                   style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
-                  ></div>
-
-                  <div class="msg-bubble">
-                    <div class="msg-info">
-                      <div class="msg-info-name">BOT</div>
-                      <div class="msg-info-time">12:45</div>
-                    </div>
-
-                    <div class="msg-text">
-                      Hi, welcome to SimpleChat! Go ahead and send me a message.
-                    </div>
-                  </div>
-                </div>
-                <div class="msg right-msg">
-                    <div
-                    class="msg-img"
-                    style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)">
-                    </div>
-                    <div class="msg-bubble">
-                        <div class="msg-info">
-                            <div class="msg-info-name">Sajad</div>
-                            <div class="msg-info-time">12:46</div>
-                        </div>
-                        <div class="msg-text">
-                          You can change your name in JS section!
-                        </div>
-                    </div>
-                </div>
-            </main>
-            <form class="msger-inputarea">
-                <label>
-                    <input type="text" class="msger-input" placeholder="Enter your message...">
-                </label>
-                <button type="submit" class="msger-send-btn">Send</button>
-            </form>
-        </div>
         </section>
         <footer class="footer animate__animated animate__fadeInUp">
             <div class="footer__site-info">
@@ -126,10 +89,7 @@
                 <li class="footer__contact-item">
                     <label class="footer__dark-label">
                         <div class="footer__dark-checkbox-container">
-                            <input
-                                type="checkbox"
-                                class="footer__dark-checkbox"
-                            />
+                            <input type="checkbox" class="footer__dark-checkbox"/>
                             <span class="footer__dark-switch"></span>
                         </div>
                         <span class="footer__dark-text">Dark mode</span>
@@ -143,11 +103,7 @@
                 <li class="footer__contact-item">
                     <i class="fa fa-envelope footer__contact-icon"></i>
                     <p>
-                        <a
-                            class="basic-link"
-                            href="mailto:calmebot.langlab@gmail.com"
-                            >calmebot.langlab@gmail.com</a
-                        >
+                        <a class="basic-link" href="mailto:calmebot.langlab@gmail.com" >calmebot.langlab@gmail.com</a>
                     </p>
                 </li>
             </ul>

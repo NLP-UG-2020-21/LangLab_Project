@@ -1,32 +1,118 @@
-const msgerForm = get(".msger-inputarea");
-const msgerInput = get(".msger-input");
-const msgerChat = get(".msger-chat");
+const msgerForm = get('.msger-inputarea');
+const msgerInput = get('.msger-input');
+const msgerChat = get('.msger-chat');
 const submitButton = document.getElementById('submit-button');
+const BOT_IMG = 'images/chatbot_icon.png';
+const PERSON_IMG = 'images/user_icon.png';
+const BOT_NAME = 'Eva';
+const patterns = [
+    /i(\s\w*){0,3}feel(\s\w*){0,3}(exhausted|tired|depressed|bad|awful|anxious)/i,
+    /i cannot deal with (\w\s?)+/i,
+    /i(\s\w*){0,3}want(\s\w*){0,3}to(\s\w*){0,3}(die|kill myself|hurt myself|talk)/i,
+    /i feel \w*(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid) now/i,
+    /i feel so \w*(stressed|anxious|worried)+ about \w*/i,
+    /i have so much \w*(work|anxiety|anger|stress)/i,
+    /i am\s?\s(sad|stupid|done|stressed|nervous|useless)/i,
+    /i feel \w*(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid)/i,
+    /i feel really \w*(sad|stupid|anxious|stressed|useless|angry)+ today/i,
+    /i need \w*(help|you)/i,
+    /i can not deal with \w*(work|pressure|stress|anxiety|depression|sadness|anger|loneliness)+ and (work|pressure|stress|anxiety|depression|sadness|anger|loneliness)/i,
+    /i feel \w*(fucking|so|very) \w*(sad|exhausted|lonely|stressed|tired|stupid)/i,
+    /everything is \w*(false|wrong|bad|shitty)+/i,
+    /i do not know \w*(what to do|how i feel)/i,
+    /i \w*(worry|cry|overthink|stress)+ a lot/i,
+];
 
-// Icons made by Freepik from www.flaticon.com
-const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
-const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
-const BOT_NAME = "BOT";
-const PERSON_NAME = "Sajad";
+let stageStatus = 0;
+let currentScenarioArr = [];
 
-msgerForm.addEventListener("submit", event => {
-    event.preventDefault();
+const resetCalmebotConversation = () => {
+    stageStatus = 0;
+    currentScenarioArr = [];
+};
 
-    const msgText = msgerInput.value;
+const preprocessing = (msgText) => {
+    msgText = msgText
+        .replace(/[!\.@#$%^&,*`~()}:;\|{"<>/?\\]/g, '')
+        .replace(/'m/g, ' am')
+        .replace(/'s/g, ' is')
+        .replace(/'re/g, ' are')
+        .replace(/'ve/g, ' have')
+        .toLowerCase();
+    return msgText;
+};
+
+const messageManage = () => {
+    let msgText = msgerInput.value;
+    let msgTextPreprocessed = preprocessing(msgText);
     if (!msgText) return;
     let userName = document.getElementById('name-box').value;
     if (userName === '') {
         alert('You need to input your name!');
     } else {
-        appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
-        msgerInput.value = "";
-
-        botResponse(msgText);
+        appendMessage(userName, PERSON_IMG, 'right', msgText);
+        msgerInput.value = '';
+        if (stageStatus > 0) {
+            handleCalmebotStage(stageStatus, msgTextPreprocessed);
+        } else {
+            const isMatch = patterns.some((rx) => rx.test(msgTextPreprocessed));
+            if (isMatch) {
+                calmebotResponse();
+            } else {
+                apiResponse(msgTextPreprocessed);
+            }
+        }
     }
+};
+
+const handleCalmebotStage = (stage, msgText) => {
+    if (
+        stage !== 0 &&
+        !msgText.match(
+            /(yes|yep|yup|yeah|ok|okay|great|agreed|yo|absolutely|indeed|yes please|good|fine|sure|definitely|right|(that is right)|alright|mhm|yea|true|(all right)|allright|surely|(sure thing)|naturally|(why not)|(we can)|(we can do that)|(that would be great)|(that would be amazing)|(great idea))/i
+        )
+    ) {
+        setTimeout(() => {
+            const answerDecline = [
+                "Is there anything you'd like to talk about?",
+                'Would you like to talk about something else?',
+                'Maybe there is something you want to share with me.',
+                'Is there something you want to discuss?',
+                "Feel free to tell me more about your feelings when you're ready.",
+                'What would you like to talk about?',
+                "I'm sure we'll find another topic to discuss.",
+                'Write me if you feel ready to share your feelings, I really could help you.',
+                'Would you like to change the topic?',
+                "I'm always there for you, remember that.",
+            ];
+            let randomAnswerDecline = random_scenario(
+                0,
+                answerDecline.length - 1
+            );
+            appendMessage(
+                BOT_NAME,
+                BOT_IMG,
+                'left',
+                answerDecline[randomAnswerDecline]
+            );
+        }, 2000);
+        resetCalmebotConversation();
+        return;
+    }
+    const messageToAppend = currentScenarioArr[stage];
+    setTimeout(() => {
+        appendMessage(BOT_NAME, BOT_IMG, 'left', messageToAppend);
+    }, 2000);
+    stageStatus++;
+    if (stage >= currentScenarioArr.length - 1) resetCalmebotConversation();
+};
+
+msgerForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    messageManage();
 });
 
 function appendMessage(name, img, side, text) {
-    //   Simple solution for small apps
     const msgHTML = `
     <div class="msg ${side}-msg">
         <div class="msg-img" style="background-image: url(${img})"></div>
@@ -40,27 +126,18 @@ function appendMessage(name, img, side, text) {
         </div>
     </div>
     `;
-    msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+    msgerChat.insertAdjacentHTML('beforeend', msgHTML);
     msgerChat.scrollTop += 500;
 }
 
 
-const patterns = [/i feel\s?\w+\s(exhausted|tired|depressed)/, /i can not deal with/, /i feel \w*(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid) now/,
-/i feel so \w*(stressed|anxious|worried)+ about \w*/, /i have so much \w*(work|anxiety|anger|stress)/,
-/i am\s?\s(sad|stupid|done|stressed|nervous|useless)/, /i feel \w*(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid),
-/i feel really \w*(sad|stupid|anxious|stressed|useless|angry)+ today/,
-/i need \w*(help|you)/, /i can not deal with \w*(work|pressure|stress|anxiety|depression|sadness|anger|loneliness)+ and (work|pressure|stress|anxiety|depression|sadness|anger|loneliness)/,
-/i feel \w*(fucking|so|very) \w*(sad|exhausted|lonely|stressed|tired|stupid)/, /everything is \w*(false|wrong|bad|shitty)+/,
-/i do not know \w*(what to do|how i feel)/, /i \w*(worry|cry|overthink|stress)+ a lot/]
-
-
-function botResponse(userMessage) {
-    // const r = random(0, BOT_MSGS.length - 1);
     let userName = document.getElementById('name-box').value;
     let urlUserMessage = userMessage.replace(/\s/g, '%20');
-
-
-    fetch('https://ai-chatbot.p.rapidapi.com/chat/free?message=' + urlUserMessage + '%3F&uid=' + userName,
+    fetch(
+        'https://ai-chatbot.p.rapidapi.com/chat/free?message=' +
+            urlUserMessage +
+            '%3F&uid=' +
+            userName,
         {
             method: 'GET',
             headers: {
@@ -70,45 +147,48 @@ function botResponse(userMessage) {
             },
         }
     )
-    .then((response) => response.json())
-    .then((response) => {
-        //outputs the last few array elements of messages to html
-        const msgText = response['chatbot']['response'];
-        const delay = msgText.split(" ").length * 100;
-        setTimeout(() => {
-            appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-        }, delay);
-    })
-}
+        .then((response) => response.json())
+        .then((response) => {
+            const msgText = response['chatbot']['response'];
+            setTimeout(() => {
+                appendMessage(BOT_NAME, BOT_IMG, 'left', msgText);
+            }, 2000);
+        });
+};
 
 // Utils
 function get(selector, root = document) {
     return root.querySelector(selector);
 }
 
-function formatDate(date) {
-    const h = "0" + date.getHours();
-    const m = "0" + date.getMinutes();
-
+const formatDate = (date) => {
+    const h = '0' + date.getHours();
+    const m = '0' + date.getMinutes();
     return `${h.slice(-2)}:${m.slice(-2)}`;
-}
+};
 
-function random(min, max) {
+const random_scenario = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
-}
+};
 
 // disables submit button on click
-submitButton.addEventListener('click', function(event) {
+submitButton.addEventListener('click', function (event) {
     event.target.disabled = true;
 });
 
-// hides text input upon clicking on submit button
-function toggle() {
-    let element = document.getElementById('name-box');
-
-    if ( element.style.display!=='none' ) {
-      element.style.display='none';
+// hides header upon clicking on submit button
+const toggle = () => {
+    let element = document.getElementById('msger-header');
+    if (element.style.display !== 'none') {
+        appendMessage(
+            BOT_NAME,
+            BOT_IMG,
+            'left',
+            "Hello, I'm Eva! Feel free to write what's on your mind. " +
+                "I'll do my best to help you."
+        );
+        element.style.display = 'none';
     } else {
-      element.style.display='';
+        element.style.display = '';
     }
-}
+};

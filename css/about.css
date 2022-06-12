@@ -1,5 +1,6 @@
 .container {
-    width: 700px;
+    width: 100%;
+    max-width: 700px;
     margin: 0 auto;
 }
 
@@ -9,8 +10,20 @@
     font-size: xx-large;
 }
 
+.dark-theme .about-header {
+    text-align: left;
+    color: #438c69;
+    font-size: xx-large;
+}
+
 .about-name-surname {
     color: rgb(52, 165, 108);
+    margin-top: 50px;
+    text-align: center;
+}
+
+.dark-theme .about-name-surname {
+    color: #438c69;
     margin-top: 50px;
     text-align: center;
 }
@@ -27,4 +40,7 @@
 
 .about-icons:hover {
     color: rgb(52, 165, 108);
+}
+.dark-theme .about-icons:hover {
+    color: #397458;
 }
