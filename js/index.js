@@ -45,7 +45,13 @@ function appendMessage(name, img, side, text) {
 }
 
 
-const patterns = [/i feel\s?\w+\s(exhausted|tired|depressed)/, /i can not deal with/, /dasdasd/]
+const patterns = [/i feel\s?\w+\s(exhausted|tired|depressed)/, /i can not deal with/, /i feel \w*(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid) now/,
+/i feel so \w*(stressed|anxious|worried)+ about \w*/, /i have so much \w*(work|anxiety|anger|stress)/,
+/i am\s?\s(sad|stupid|done|stressed|nervous|useless)/, /i feel \w*(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid),
+/i feel really \w*(sad|stupid|anxious|stressed|useless|angry)+ today/,
+/i need \w*(help|you)/, /i can not deal with \w*(work|pressure|stress|anxiety|depression|sadness|anger|loneliness)+ and (work|pressure|stress|anxiety|depression|sadness|anger|loneliness)/,
+/i feel \w*(fucking|so|very) \w*(sad|exhausted|lonely|stressed|tired|stupid)/, /everything is \w*(false|wrong|bad|shitty)+/,
+/i do not know \w*(what to do|how i feel)/, /i \w*(worry|cry|overthink|stress)+ a lot/]
 
 
 function botResponse(userMessage) {
