@@ -130,7 +130,22 @@ function appendMessage(name, img, side, text) {
     msgerChat.scrollTop += 500;
 }
 
+const calmebotResponse = () => {
+    fetch('js/corpora.json')
+        .then((response) => response.json())
+        .then((json) => {
+            let scenario_num = random_scenario(
+                0,
+                json['main']['calming_scenarios'].length - 1
+            );
+            const scenario_arr =
+                json['main']['calming_scenarios'][scenario_num];
+            currentScenarioArr = [].concat(scenario_arr);
+            handleCalmebotStage(0, '');
+        });
+};
 
+const apiResponse = (userMessage) => {
     let userName = document.getElementById('name-box').value;
     let urlUserMessage = userMessage.replace(/\s/g, '%20');
     fetch(
