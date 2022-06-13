@@ -6,18 +6,18 @@ const BOT_IMG = 'images/chatbot_icon.png';
 const PERSON_IMG = 'images/user_icon.png';
 const BOT_NAME = 'Eva';
 const patterns = [
-    /i(\s\w*){0,3}feel(\s\w*){0,3}(exhausted|tired|depressed|bad|awful|anxious)/i,
+    /i(\s\w*){0,3}feel(\s\w*){0,3}(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid|terrible|depressed|miserable|upset|moody|mournful|heartbroken)/i,
     /i cannot deal with (\w\s?)+/i,
     /i(\s\w*){0,3}want(\s\w*){0,3}to(\s\w*){0,3}(die|kill myself|hurt myself|talk)/i,
-    /i feel \w*(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid) now/i,
+    /i feel \w*(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid|terrible|depressed|miserable|upset|moody|mournful|heartbroken) now/i,
     /i feel so \w*(stressed|anxious|worried)+ about \w*/i,
     /i have so much \w*(work|anxiety|anger|stress)/i,
     /i am\s?\s(sad|stupid|done|stressed|nervous|useless)/i,
-    /i feel \w*(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid)/i,
+    /i feel \w*(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid|terrible|depressed|miserable|upset|moody|mournful|heartbroken)/i,
     /i feel really \w*(sad|stupid|anxious|stressed|useless|angry)+ today/i,
     /i need \w*(help|you)/i,
-    /i can not deal with \w*(work|pressure|stress|anxiety|depression|sadness|anger|loneliness)+ and (work|pressure|stress|anxiety|depression|sadness|anger|loneliness)/i,
-    /i feel \w*(fucking|so|very) \w*(sad|exhausted|lonely|stressed|tired|stupid)/i,
+    /i can not deal with \w*(work|pressure|stress|anxiety|depression|sadness|anger|loneliness)+ and? (work|pressure|stress|anxiety|depression|sadness|anger|loneliness)?/i,
+    /i feel \w*(fucking|so|very) \w*(sad|bad|exhausted|lonely|stressed|tired|anxious|stupid|terrible|depressed|miserable|upset|moody|mournful|heartbroken)/i,
     /everything is \w*(false|wrong|bad|shitty)+/i,
     /i do not know \w*(what to do|how i feel)/i,
     /i \w*(worry|cry|overthink|stress)+ a lot/i,
